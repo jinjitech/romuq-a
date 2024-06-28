@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/romuq-a/static/css/main.f855e6bc.css",
+    "main.js": "/romuq-a/static/js/main.edbcd83f.js",
+    "static/js/453.fc01f49c.chunk.js": "/romuq-a/static/js/453.fc01f49c.chunk.js",
+    "index.html": "/romuq-a/index.html",
+    "main.f855e6bc.css.map": "/romuq-a/static/css/main.f855e6bc.css.map",
+    "main.edbcd83f.js.map": "/romuq-a/static/js/main.edbcd83f.js.map",
+    "453.fc01f49c.chunk.js.map": "/romuq-a/static/js/453.fc01f49c.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f855e6bc.css",
+    "static/js/main.edbcd83f.js"
+  ]
+}
