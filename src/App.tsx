@@ -1,40 +1,72 @@
 import React, { useState } from 'react';
+import { Card, CardContent, CardHeader, CardTitle } from "./components/ui/card";
+import { Button } from "./components/ui/button";
 import { AlertCircle, CheckCircle } from 'lucide-react';
-import './App.css';
 
-// 更新されたコンポーネントの型定義
-type CardProps = React.PropsWithChildren<{className?: string}>;
-type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement>;
+const quizData = [
+  {
+    question: "調整給付について、企業側で行う手続きはありますか？",
+    options: [
+      "はい、企業側で申請書を提出する必要があります",
+      "いいえ、手続きは不要です",
+      "企業の規模によって異なります",
+      "従業員数に応じて手続きが必要です"
+    ],
+    correctAnswer: 1
+  },
+  {
+    question: "調整給付を受け取るために申請は必要ですか？",
+    options: [
+      "いいえ、自動的に支給されます",
+      "はい、オンラインで申請する必要があります",
+      "市区町村から送付される確認書に記入して返信する必要があります",
+      "勤務先の会社を通じて申請します"
+    ],
+    correctAnswer: 2
+  },
+  {
+    question: "入社1年未満でも育児休業を取得できますか？",
+    options: [
+      "いいえ、1年以上勤務しないと取得できません",
+      "はい、無条件で取得できます",
+      "原則可能ですが、労使協定により制限される場合があります",
+      "管理職のみ取得可能です"
+    ],
+    correctAnswer: 2
+  },
+  {
+    question: "入社1年未満で育児休業を取得する際、特別に必要な書類はありますか？",
+    options: [
+      "特別な書類は必要ありません",
+      "会社の推薦状が必要です",
+      "前職の離職票の添付が必要な場合があります",
+      "医師の診断書が必要です"
+    ],
+    correctAnswer: 2
+  },
+  {
+    question: "協会けんぽの任意継続で家族を扶養に入れる際、マイナンバー記載で必要書類が省ける場合がありますが、確実な方法は何ですか？",
+    options: [
+      "マイナンバーの記載のみで十分です",
+      "必要書類を添付する方が確実です",
+      "電話で協会けんぽに確認することが最も確実です",
+      "市町村役場で証明書を取得することが必要です"
+    ],
+    correctAnswer: 1
+  }
+];
+interface QuizQuestion {
+  question: string;
+  options: string[];
+  correctAnswer: number;
+}
 
-const Card: React.FC<CardProps> = ({children, className}) => <div className={`card ${className || ''}`}>{children}</div>;
-const Button: React.FC<ButtonProps> = (props) => <button {...props} />;
-const CardContent: React.FC<CardProps> = ({children, className}) => <div className={`card-content ${className || ''}`}>{children}</div>;
-const CardHeader: React.FC<CardProps> = ({children, className}) => <div className={`card-header ${className || ''}`}>{children}</div>;
-const CardTitle: React.FC<CardProps> = ({children, className}) => <h2 className={`card-title ${className || ''}`}>{children}</h2>;
-
-
-// ここにクイズアプリのコードを貼り付けます
-const QuizApp: React.FC = () => {
-  // クイズの質問データ
-  const quizData = [
-    {
-      question: "Reactは何のためのライブラリですか？",
-      options: [
-        "サーバーサイドレンダリング",
-        "データベース管理",
-        "ユーザーインターフェース構築",
-        "画像処理"
-      ],
-      correctAnswer: 2
-    },
-    // 他の質問を追加...
-  ];
-
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
-  const [showScore, setShowScore] = useState(false);
+const QuizApp = () => {
+  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+  const [score, setScore] = useState<number>(0);
+  const [showScore, setShowScore] = useState<boolean>(false);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [isAnswered, setIsAnswered] = useState(false);
+  const [isAnswered, setIsAnswered] = useState<boolean>(false);
 
   const handleAnswerClick = (selectedOption: number) => {
     if (isAnswered) return;
@@ -69,7 +101,7 @@ const QuizApp: React.FC = () => {
   return (
     <Card className="w-full max-w-2xl mx-auto mt-8">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center">クイズアプリ</CardTitle>
+        <CardTitle className="text-2xl font-bold text-center">労務クイズ</CardTitle>
       </CardHeader>
       <CardContent>
         {showScore ? (
@@ -93,13 +125,13 @@ const QuizApp: React.FC = () => {
                   onClick={() => handleAnswerClick(index)}
                   className={`w-full justify-start ${
                     isAnswered
-                      ? index === quizData[currentQuestion].correctAnswer
-                        ? 'bg-green-500 hover:bg-green-600'
-                        : selectedAnswer === index
-                        ? 'bg-red-500 hover:bg-red-600'
-                        : 'bg-gray-200 hover:bg-gray-300'
-                      : ''
-                  }`}
+                    ? index === quizData[currentQuestion].correctAnswer
+                      ? 'bg-green-500 hover:bg-green-600'
+                      : selectedAnswer === index
+                      ? 'bg-red-500 hover:bg-red-600'
+                      : 'bg-black text-white'
+                    : 'bg-black text-white hover:bg-gray-700'
+                    }`}
                   disabled={isAnswered}
                 >
                   {isAnswered && (
@@ -129,12 +161,4 @@ const QuizApp: React.FC = () => {
   );
 };
 
-function App() {
-  return (
-    <div className="App">
-      <QuizApp />
-    </div>
-  );
-}
-
-export default App;
+export default QuizApp;
