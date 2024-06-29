@@ -5,7 +5,7 @@ import { AlertCircle, CheckCircle } from 'lucide-react';
 
 const quizData = [
   {
-    question: "調整給付について、企業側で行う手続きはありますか？",
+    question: "定額減税の調整給付について、企業側で行う手続きはありますか？",
     options: [
       "はい、企業側で申請書を提出する必要があります",
       "いいえ、手続きは不要です",
@@ -15,14 +15,34 @@ const quizData = [
     correctAnswer: 1
   },
   {
-    question: "調整給付を受け取るために申請は必要ですか？",
+    question: "市区町村からある従業員についての「給与の調査について」の書類が届いた場合の対応は？",
+    options: [
+      "書類を無視する",
+      "従業員に知らせて対応する",
+      "会社で処理する",
+      "市区町村に連絡する"
+    ],
+    correctAnswer: 1
+  },
+  {
+    question: "定額減税の調整給付を受け取るために申請は必要ですか？",
     options: [
       "いいえ、自動的に支給されます",
-      "はい、オンラインで申請する必要があります",
+      "はい、市町村窓口で申請する必要があります",
       "市区町村から送付される確認書に記入して返信する必要があります",
       "勤務先の会社を通じて申請します"
     ],
     correctAnswer: 2
+  },
+  {
+    question: "協会けんぽから「健康保険委員」に登録する書類が届いた場合、登録は必須ですか？",
+    options: [
+      "はい、必須です",
+      "いいえ、任意です",
+      "会社によって異なります",
+      "特定の条件を満たす場合は必須です"
+    ],
+    correctAnswer: 1
   },
   {
     question: "入社1年未満でも育児休業を取得できますか？",
@@ -45,15 +65,48 @@ const quizData = [
     correctAnswer: 2
   },
   {
-    question: "協会けんぽの任意継続で家族を扶養に入れる際、マイナンバー記載で必要書類が省ける場合がありますが、確実な方法は何ですか？",
+    question: "「日給月給制」とは何ですか？",
     options: [
-      "マイナンバーの記載のみで十分です",
-      "必要書類を添付する方が確実です",
-      "電話で協会けんぽに確認することが最も確実です",
-      "市町村役場で証明書を取得することが必要です"
+      "月給制の一種で、遅刻や欠勤した場合にその分の給与が減額される制度",
+      "月給制の一種で、遅刻や欠勤しても給与が減額されない制度",
+      "日給制の一種で、毎日支給される制度",
+      "月給制の一種で、毎月固定額が支給される制度"
+    ],
+    correctAnswer: 0
+  },
+  {
+    question: "障害者雇用率が引き上げられましたが、何人以上の会社で障害者を雇用しなければならないのでしょうか？",
+    options: [
+      "30人以上",
+      "40人以上",
+      "50人以上",
+      "60人以上"
+    ],
+    correctAnswer: 1
+  },
+  {
+    question: "36協定（サブロク協定）とは何ですか？",
+    options: [
+      "労働者に法定労働時間を超えて働かせる場合や、休日に労働させる場合に必要な労使間の取り決め",
+      "労働者の健康診断に関する協定",
+      "労働者の退職金に関する協定",
+      "労働者の給与計算に関する協定"
+    ],
+    correctAnswer: 0
+  },
+  {
+    question: "住民税はどの住所で課税されますか？",
+    options: [
+      "現在の住所",
+      "現年の1月1日現在の住所地",
+      "引っ越し先の住所",
+      "勤務先の住所"
     ],
     correctAnswer: 1
   }
+
+
+
 ];
 interface QuizQuestion {
   question: string;
@@ -101,7 +154,7 @@ const QuizApp = () => {
   return (
     <Card className="w-full max-w-2xl mx-auto mt-8">
       <CardHeader>
-        <CardTitle className="text-2xl font-bold text-center">労務クイズ</CardTitle>
+        <CardTitle className="text-2xl font-bold text-center">Jinjiクイズ</CardTitle>
       </CardHeader>
       <CardContent>
         {showScore ? (
@@ -123,7 +176,7 @@ const QuizApp = () => {
                 <Button
                   key={index}
                   onClick={() => handleAnswerClick(index)}
-                  className={`w-full justify-start ${
+                  className={`w-full justify-start py-4 px-6 text-lg ${
                     isAnswered
                     ? index === quizData[currentQuestion].correctAnswer
                       ? 'bg-green-500 hover:bg-green-600'
