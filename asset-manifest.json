@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/romuq-a/static/css/main.22334bd6.css",
-    "main.js": "/romuq-a/static/js/main.e0913139.js",
+    "main.css": "/romuq-a/static/css/main.81ee91ff.css",
+    "main.js": "/romuq-a/static/js/main.4cf23974.js",
     "static/js/453.fc01f49c.chunk.js": "/romuq-a/static/js/453.fc01f49c.chunk.js",
     "index.html": "/romuq-a/index.html",
-    "main.22334bd6.css.map": "/romuq-a/static/css/main.22334bd6.css.map",
-    "main.e0913139.js.map": "/romuq-a/static/js/main.e0913139.js.map",
+    "main.81ee91ff.css.map": "/romuq-a/static/css/main.81ee91ff.css.map",
+    "main.4cf23974.js.map": "/romuq-a/static/js/main.4cf23974.js.map",
     "453.fc01f49c.chunk.js.map": "/romuq-a/static/js/453.fc01f49c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.22334bd6.css",
-    "static/js/main.e0913139.js"
+    "static/css/main.81ee91ff.css",
+    "static/js/main.4cf23974.js"
   ]
 }
